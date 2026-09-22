@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "debt-asset-radar"
+version = "0.1.0"
+description = "Offline-first low-price asset opportunity radar for debt recovery planning"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1.0",
+  "pydantic>=2.10,<3.0",
+  "sqlalchemy>=2.0,<3.0",
+  "uvicorn[standard]>=0.34,<1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "httpx>=0.28,<1.0",
+  "pytest>=8.3,<9.0",
+  "pytest-cov>=6.0,<7.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["engine", "services", "crawler"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q --strict-markers --disable-warnings"
+
+[tool.coverage.run]
+branch = true
+source = ["engine", "services.api"]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true

@@ -1,0 +1,15 @@
+{
+  "phase_0_enabled": [],
+  "phase_1_primary": [
+    "ali_jianlou"
+  ],
+  "later_sources": [
+    "ovupre",
+    "gpai",
+    "pccz",
+    "jd_asset",
+    "rmfysszc",
+    "caa123"
+  ],
+  "default_network_allowed": false
+}

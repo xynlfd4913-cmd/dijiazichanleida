@@ -1,0 +1,69 @@
+{
+  "currency": "CNY",
+  "unknown_amount_policy": "never_coerce_to_zero",
+  "deposit_policy": "cash_threshold_only_not_final_cost",
+  "risk_reserve": {
+    "status": "unknown",
+    "min_amount": null,
+    "max_amount": null,
+    "requires_explicit_input": true
+  },
+  "asset_templates": {
+    "machine": [
+      "拆卸",
+      "吊装",
+      "叉车",
+      "运输",
+      "安装",
+      "电气改造",
+      "缺件",
+      "检测",
+      "维修",
+      "仓储"
+    ],
+    "vehicle": [
+      "拖车",
+      "停车费",
+      "维修",
+      "保养",
+      "年检",
+      "保险",
+      "过户",
+      "钥匙",
+      "证件",
+      "牌照限制"
+    ],
+    "property": [
+      "税费",
+      "登记",
+      "物业",
+      "水电气",
+      "装修",
+      "维修",
+      "占用",
+      "租赁",
+      "腾退",
+      "交付时间"
+    ],
+    "inventory": [
+      "数量核验",
+      "破损",
+      "过期",
+      "缺件",
+      "仓储",
+      "搬运",
+      "包装",
+      "物流",
+      "销售渠道",
+      "平台扣点"
+    ],
+    "intellectual_property": [
+      "年费",
+      "维持费",
+      "转让登记",
+      "权利有效期",
+      "许可状态",
+      "商业化成本"
+    ]
+  }
+}

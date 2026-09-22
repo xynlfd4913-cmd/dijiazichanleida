@@ -1,0 +1,36 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: services/api/Dockerfile
+    environment:
+      RADAR_DATABASE_URL: sqlite+pysqlite:////app/data/debt_asset_radar.db
+      SEED_ON_START: "true"
+      WEB_ORIGIN: http://localhost:3000
+    ports:
+      - "8000:8000"
+    volumes:
+      - radar_data:/app/data
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health')"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+
+  web:
+    build:
+      context: apps/web
+      args:
+        NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://localhost:8000/api
+      API_INTERNAL_BASE_URL: http://api:8000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+
+volumes:
+  radar_data:
+

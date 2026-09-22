@@ -1,0 +1,24 @@
+{
+  "timezone": "Asia/Shanghai",
+  "active_in_phase_0": false,
+  "jobs": [
+    {
+      "name": "full_scan",
+      "schedule": "daily_at_07:30"
+    },
+    {
+      "name": "incremental_scan",
+      "schedule": "every_2_hours"
+    },
+    {
+      "name": "watched_asset_refresh",
+      "schedule": "daily_evening"
+    }
+  ],
+  "deadline_rechecks_hours": [
+    24,
+    6,
+    1
+  ],
+  "notes": "仅记录产品默认值；Phase 0 不启动后台线程或真实扫描。"
+}
