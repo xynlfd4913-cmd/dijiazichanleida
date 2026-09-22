@@ -14,11 +14,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="zh-CN">
-      <body className="min-h-screen bg-ink-950 text-slate-100 antialiased">
+      <body className="min-h-screen overflow-x-hidden bg-ink-950 text-slate-100 antialiased">
         <Sidebar />
         <MobileHeader />
-        <div className="min-h-screen lg:pl-[248px]">
-          <main className="mx-auto w-full max-w-[1600px] px-4 pb-24 pt-5 sm:px-6 sm:pt-7 lg:px-8 lg:pb-10 lg:pt-8 xl:px-10">{children}</main>
+        <div className="min-h-screen min-w-0 shell:pl-60">
+          <main className="mx-auto w-full min-w-0 max-w-[1500px] px-4 pb-24 pt-5 sm:px-6 sm:pt-7 shell:px-7 shell:pb-10 shell:pt-8 xl:px-9">{children}</main>
         </div>
         <MobileNavigation />
       </body>

@@ -21,13 +21,13 @@ export function PageHeader({
   action?: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+    <div className="flex min-w-0 flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
       <div className="min-w-0">
         {eyebrow ? <p className="mb-2 text-xs font-semibold uppercase tracking-[.18em] text-signal-400">{eyebrow}</p> : null}
         <h1 className="text-balance text-2xl font-semibold tracking-tight text-white sm:text-3xl">{title}</h1>
         {description ? <p className="mt-2 max-w-3xl text-[15px] leading-6 text-slate-400">{description}</p> : null}
       </div>
-      {action ? <div className="shrink-0">{action}</div> : null}
+      {action ? <div className="w-full min-w-0 xl:w-auto xl:shrink-0">{action}</div> : null}
     </div>
   );
 }
@@ -68,17 +68,17 @@ export function StatusPill({ children, tone = "slate" }: { children: ReactNode; 
 }
 
 export function Panel({ children, className = "", id }: { children: ReactNode; className?: string; id?: string }) {
-  return <section id={id} className={`rounded-2xl border border-white/[.075] bg-white/[.035] shadow-glow ${className}`}>{children}</section>;
+  return <section id={id} className={`min-w-0 rounded-2xl border border-white/[.075] bg-white/[.035] shadow-glow ${className}`}>{children}</section>;
 }
 
 export function SectionHeading({ title, detail, action }: { title: string; detail?: string; action?: ReactNode }) {
   return (
-    <div className="flex items-center justify-between gap-4">
-      <div>
+    <div className="flex min-w-0 flex-col items-start justify-between gap-3 sm:flex-row sm:items-center sm:gap-4">
+      <div className="min-w-0">
         <h2 className="text-base font-semibold text-white">{title}</h2>
         {detail ? <p className="mt-1 text-sm text-slate-500">{detail}</p> : null}
       </div>
-      {action}
+      {action ? <div className="shrink-0">{action}</div> : null}
     </div>
   );
 }

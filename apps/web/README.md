@@ -5,12 +5,14 @@ Phase 0 的 Next.js + TypeScript + Tailwind CSS 前端。默认使用本地模�
 ## Windows 本地启动
 
 ```powershell
-cd apps\web
-npm install
-npm run dev
+# 在仓库根目录执行
+powershell -ExecutionPolicy Bypass -File .\scripts\setup.ps1
+powershell -ExecutionPolicy Bypass -File .\scripts\start-web.ps1
 ```
 
 浏览器打开 `http://localhost:3000`。
+
+启动脚本会检测端口占用并固定使用指定端口；可用 `-Port 3001` 显式更改。开发缓存使用 `.next-dev`，与生产构建 `.next` 隔离，避免运行开发服务后生产页面丢失 CSS。
 
 后端默认地址为 `http://localhost:8000/api`。需要覆盖时，可复制 `.env.example` 为 `.env.local` 并修改地址。
 

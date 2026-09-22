@@ -27,6 +27,12 @@ const config: Config = {
       backgroundImage: {
         grid: "linear-gradient(rgba(148,163,184,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.035) 1px, transparent 1px)",
       },
+      screens: {
+        // The Codex preview and many compact desktop windows are just under
+        // Tailwind's default `lg` breakpoint. Switch to the desktop shell as
+        // soon as there is enough room for a useful sidebar.
+        shell: "900px",
+      },
     },
   },
   plugins: [],

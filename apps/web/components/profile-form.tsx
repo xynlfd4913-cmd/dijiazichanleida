@@ -134,7 +134,7 @@ export function ProfileForm({ initialProfile }: { initialProfile: UserProfile })
         </div>
       </Panel>
 
-      <div className="sticky bottom-[68px] z-20 flex flex-col gap-3 rounded-2xl border border-white/10 bg-ink-900/95 p-3 shadow-2xl backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between lg:bottom-4">
+      <div className="sticky bottom-[68px] z-20 flex flex-col gap-3 rounded-2xl border border-white/10 bg-ink-900/95 p-3 shadow-2xl backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between shell:bottom-4">
         <div className="px-2 text-sm text-slate-400">
           {status === "saved" ? <span className="inline-flex items-center gap-2 text-signal-300"><CheckCircleIcon className="h-5 w-5" />已保存并重新计算画像</span> : status === "local" ? <span className="inline-flex items-center gap-2 text-amber-200"><CheckCircleIcon className="h-5 w-5" />API 未启动，已暂存到此浏览器</span> : "保存后将影响本金适配、技能与生产评分"}
         </div>

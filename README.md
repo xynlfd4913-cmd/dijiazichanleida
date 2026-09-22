@@ -43,6 +43,8 @@ powershell -ExecutionPolicy Bypass -File .\scripts\start-web.ps1
 
 `setup.ps1` 会从示例文件创建未纳入 Git 的 `.env` 与 `apps/web/.env.local`。可用配置见 [.env.example](./.env.example) 和 [apps/web/.env.example](./apps/web/.env.example)。
 
+`start-web.ps1` 固定使用 3000 端口；端口被占用时会停止并提示，不会悄悄切换到另一个地址。确实需要其他端口时可传入 `-Port 3001`。开发编译输出位于 `.next-dev`，不会覆盖生产构建的 `.next` 静态样式资源。
+
 ## Docker 启动
 
 ```powershell

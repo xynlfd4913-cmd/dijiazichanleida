@@ -17,18 +17,19 @@ import { usePathname } from "next/navigation";
 import type { ComponentType, SVGProps } from "react";
 
 type Icon = ComponentType<SVGProps<SVGSVGElement>>;
+type NavItemConfig = { href: string; label: string; shortLabel: string; icon: Icon };
 
-const primaryNav: { href: string; label: string; icon: Icon }[] = [
-  { href: "/", label: "我的进度", icon: HomeIcon },
-  { href: "/radar", label: "低价资产雷达", icon: SignalIcon },
-  { href: "/subscriptions", label: "我的订阅", icon: BellAlertIcon },
-  { href: "/watchlist", label: "关注列表", icon: BookmarkSquareIcon },
-  { href: "/capital", label: "资本阶梯", icon: ChartBarSquareIcon },
+const primaryNav: NavItemConfig[] = [
+  { href: "/", label: "我的进度", shortLabel: "进度", icon: HomeIcon },
+  { href: "/radar", label: "低价资产雷达", shortLabel: "雷达", icon: SignalIcon },
+  { href: "/subscriptions", label: "我的订阅", shortLabel: "订阅", icon: BellAlertIcon },
+  { href: "/watchlist", label: "关注列表", shortLabel: "关注", icon: BookmarkSquareIcon },
+  { href: "/capital", label: "资本阶梯", shortLabel: "阶梯", icon: ChartBarSquareIcon },
 ];
 
-const secondaryNav: { href: string; label: string; icon: Icon }[] = [
-  { href: "/settings", label: "画像设置", icon: Cog6ToothIcon },
-  { href: "/admin", label: "系统后台", icon: Squares2X2Icon },
+const secondaryNav: NavItemConfig[] = [
+  { href: "/settings", label: "画像设置", shortLabel: "设置", icon: Cog6ToothIcon },
+  { href: "/admin", label: "系统后台", shortLabel: "后台", icon: Squares2X2Icon },
 ];
 
 function isActive(pathname: string, href: string) {
@@ -57,7 +58,7 @@ function NavItem({ href, label, icon: Icon }: { href: string; label: string; ico
 
 export function Sidebar() {
   return (
-    <aside className="fixed inset-y-0 left-0 z-40 hidden w-[248px] flex-col border-r border-white/[.07] bg-ink-950/95 px-4 py-5 backdrop-blur-xl lg:flex">
+    <aside className="fixed inset-y-0 left-0 z-40 hidden w-60 flex-col border-r border-white/[.07] bg-ink-950/95 px-4 py-5 backdrop-blur-xl shell:flex">
       <Link href="/" className="mb-8 flex items-center gap-3 px-2" aria-label="低价资产雷达首页">
         <div className="relative flex h-10 w-10 items-center justify-center rounded-xl border border-signal-400/25 bg-signal-400/10">
           <SignalIcon className="h-6 w-6 text-signal-300" />
@@ -95,10 +96,9 @@ export function Sidebar() {
 
 export function MobileNavigation() {
   const pathname = usePathname();
-  const items = [primaryNav[0], primaryNav[1], primaryNav[2], primaryNav[3], primaryNav[4]];
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t border-white/[.08] bg-ink-950/95 px-1 pb-[max(env(safe-area-inset-bottom),.35rem)] pt-1.5 backdrop-blur-xl lg:hidden" aria-label="移动端导航">
-      {items.map(({ href, label, icon: Icon }) => {
+    <nav className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-5 border-t border-white/[.08] bg-ink-950/95 px-1 pb-[max(env(safe-area-inset-bottom),.35rem)] pt-1.5 backdrop-blur-xl shell:hidden" aria-label="移动端导航">
+      {primaryNav.map(({ href, label, shortLabel, icon: Icon }) => {
         const active = isActive(pathname, href);
         return (
           <Link
@@ -109,7 +109,8 @@ export function MobileNavigation() {
             }`}
           >
             <Icon className="h-5 w-5" />
-            <span>{label.replace("我的", "")}</span>
+            <span aria-hidden="true">{shortLabel}</span>
+            <span className="sr-only">{label}</span>
           </Link>
         );
       })}
@@ -119,7 +120,7 @@ export function MobileNavigation() {
 
 export function MobileHeader() {
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-white/[.07] bg-ink-950/90 px-4 backdrop-blur-xl lg:hidden">
+    <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-white/[.07] bg-ink-950/90 px-4 backdrop-blur-xl shell:hidden">
       <Link href="/" className="flex items-center gap-2.5">
         <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-signal-400/10 ring-1 ring-inset ring-signal-400/25">
           <SignalIcon className="h-5 w-5 text-signal-300" />
